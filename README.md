@@ -28,3 +28,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## How to start
+
+Use `install-packages.bat`(npm install, global) or `install-packages-cnpm.bat`(cnpm install, china) to install `node_modules`;
+Use `ng serve --proxy-config debug-only--proxy-conf.json` to set proxy for http requests to request data from old protocol management server.

@@ -1,0 +1,1 @@
+ng serve --proxy-config debug-only--proxy-conf.json

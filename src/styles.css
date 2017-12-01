@@ -1,0 +1,225 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    font-family: 'Segoe UI','Meiryo UI';
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Segoe UI','Meiryo UI';
+    /* font-size: 14px; */
+     line-height: 1.5; 
+}
+
+html {
+   min-height: 100%;
+   position: relative;
+  /* padding-bottom: 162px;  */
+}
+
+.ui-datatable table{
+    table-layout: fixed !important; /**table-layout: adjust table style**/
+}
+
+.ui-datatable table tbody tr{
+    height:42px;
+}
+
+
+.ui-treetable table{
+    border:0;
+    background:transparent;
+}
+
+.compare-panel-cls{
+    height:38vh !important;
+    /* width:97vw; */
+    overflow: auto;
+    border: 1px solid #D5D5D5;
+    /*background:#4286f4;*/
+}
+
+.parameter-list-cls .ui-treetable table thead{
+    height:0px !important;
+    border:0px;
+    padding:0px;
+    margin:'0 0 0 0';
+}
+
+.parameter-list-cls .ui-treetable table thead th{
+    height:0px !important;
+    border:0px;
+    padding:0px;
+    margin:'0 0 0 0';
+}
+ .ui-button-warning:hover{
+    background:#eea236 !important;
+    border:1px solid #f0ad4e !important;
+}
+.ui-button-warning:focus {
+    background:#eea236 !important;
+    border:1px solid #f0ad4e !important;
+} 
+/* .ui-button-warning:active {
+    background:#ec971f !important;
+    border:1px solid #f0ad4e !important;
+} */
+ .ui-button-danger:hover{
+    background:#d43f3a !important;
+    border:1px solid #d9534f !important;
+}
+.ui-button-danger:focus {
+    background:#d43f3a !important;
+    border:1px solid #d9534f !important;
+}   
+
+/*.button-align-right-cls:hover{
+    background:  
+}*/
+/* .buttons-container-cls{
+    float: right;
+    border: 0;
+} */
+/************************ui-treetable begin*******************************************/
+.ui-treetable tbody .ui-treetable-row td{
+    border-bottom: 1px solid #d9d9d9;
+    border-left: 0px;
+    border-right:1px solid #d9d9d9;
+    border-top:0px;
+    text-align: left;
+}
+
+.ui-treetable tbody .tree-table-row-cls{
+    text-align: center;
+}
+
+/*.ui-treetable tbody .ui-treetable-row:nth-child(even) td{
+    background-color: #eeeeee
+}
+.ui-treetable tbody .ui-treetable-row:nth-child(odd) td{
+    background-color: #ffffff
+}*/
+
+.ui-treetable tbody .ui-odd-highlight td{
+    background-color: #FFFFFF;
+}
+
+.ui-treetable tbody .ui-even-highlight td{
+    background-color: #EBF1FA;
+}
+
+
+.ui-treetable tbody .ui-diff-odd-highlight td{
+    background-color: #CCDBF2;
+    font-weight: bold;
+}
+
+.ui-treetable tbody .ui-diff-even-highlight td{
+    background-color: #BBCFEE;
+    font-weight: bold;
+}
+/************************ui-treetable end*******************************************/
+/************************ui-dislog begin*******************************************/
+.ui-dialog.ui-widget .ui-dialog-titlebar {
+    padding: 0.5em 0.75em;
+    background-image: -moz-linear-gradient(top, rgb(132, 171, 236), rgb(92, 136, 216));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(132, 171, 236)), color-stop(1, rgb(92, 136, 216)));
+    background: -ms-linear-gradient(top, rgb(132,171, 236) 0%,rgb(92, 136, 216) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#89A1E5, endColorstr=#5C88D8, GradientType=0);
+    color:#FFFFFF;
+    font-weight: bold;
+}
+.ui-dialog.ui-widget .ui-dialog-content {
+    padding: 0.5em 1.5em;
+}
+.transferTable{
+
+}
+.transferTable table{
+    table-layout: auto !important; /**table-layout: adjust table style**/
+}
+/************************ui-dislog end*******************************************/
+
+/************************ui-datatable begin*******************************************/
+.ui-cell-data{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ui-frozen-other-column{
+    background-color: #2F5988 !important;
+    color:#FFFFFF;
+}
+/************************ui-datatable end*******************************************/
+.parameter-list-cls thead {
+    display: none;
+} 
+
+.toogle-button-cls .ui-togglebutton .ui-state-defaul{
+    border: 1px solid #1f89ce;
+    background: #1f89ce !important;
+    font-weight: normal;
+    color: #1f89ce;
+}
+
+.ui-dialog .ui-dialog-footer{
+    border:0;
+}
+
+.ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+    color:#186ba0 !important;
+} 
+
+.ui-steps .ui-steps-item {
+    width: 16%;
+}
+
+.ui-steps.steps-custom {
+    padding: 40px;
+    margin-bottom: 20px; 
+}
+ 
+.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+    height: 10px;
+    padding: 0 1em;
+}
+
+.ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+    background-color: #0081c2;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 36px;
+    border-radius: 50%;
+    margin-top: -14px;
+    margin-bottom: 10px;
+}
+
+.ui-tabview-panel.ui-widget-content{
+    padding:0;
+    margin:0
+}
+
+/**responsive styles**/
+/**Small devices like phones**/
+@media screen and (max-width: 40em){ /**640px**/
+    .ui-datatable table {
+        table-layout: inherit;
+    }
+}
+/**Medium sized devices such as tablets**/
+@media screen and (min-width: 40.063em) and (max-width: 64em){/**641px~1024px**/
+    
+}
+/**Devices with large screen like desktops**/
+@media screen and (min-width: 64.063em) and (max-width: 90em){/**1025px~1440px**/
+    
+}
+/**Big screen monitors**/
+@media screen and (min-width: 90.063em) {
+    
+}
+
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeng/resources/themes/omega/theme.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";

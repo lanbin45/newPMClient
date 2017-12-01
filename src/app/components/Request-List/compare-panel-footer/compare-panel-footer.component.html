@@ -1,0 +1,9 @@
+<p-toolbar [style]="{'width':'100%'}">
+    <div class="ui-toolbar-group-left"></div> 
+  <div class="ui-toolbar-group-right">
+      <button pButton *ngIf="isEP&&!isDelete" type="button" label=" approve" class="ui-button-primary" (click)="onApprove()" icon="fa fa-check-circle fa-lg"></button>
+      <button pButton type="button" [label]=" displayLabel" (click)="onClick()" [class]="buttonClass" [icon]="icon"></button>
+      <button pButton type="button" label=" Reject" class="ui-button-warning" (click)="onReject()" icon="fa fa-ban"></button>
+  </div>
+</p-toolbar>
+<request-confirm-dialog [display]="display" [hasTransfer]="event==ProtocolAction.approve" [confirmMsg]="confirmMsg" (onOK) = "onOK($event)" (onCancel) = "onCancel($event)" ></request-confirm-dialog>

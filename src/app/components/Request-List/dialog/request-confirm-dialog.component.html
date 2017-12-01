@@ -1,0 +1,35 @@
+<p-dialog [visible]="display" [closable]="false" [modal]="true" [responsive]="true" minWidth="630" #dialog>
+    <p-header styleClass="dialog-header-cls">
+        Confirm
+    </p-header>
+    <span>{{confirmMsg}}</span>
+    <p><span>{{comments.text.asker}}</span></p>
+    <p style="margin-bottom:0px;font-size:13pt;"><span>{{comments.label.comments}}({{255-pInputTextarea.value.length}}) : </span>
+        <span *ngIf="!hasTransfer&&pInputTextarea.value.length==0" style="color: #F79684;">{{comments.label.reminder}}</span></p>
+
+    <textarea #pInputTextarea rows="5" cols="80" style="resize:none" maxlength="255" [(ngModel)]="commentText"></textarea>
+    <p *ngIf="hasTransfer" style="margin-bottom:0px;" (click)="onTransferClick(dialog)">
+        <img *ngIf="isCollapse" style="cursor: pointer; margin: 0px; width: 12px; right: auto; left: 21px; top: 8px;"  src="./assets/resources/images/arrows/collapse.png">
+        <img *ngIf="!isCollapse" style="cursor: pointer; margin: 0px; width: 12px; right: auto; left: 21px; top: 8px;"  src="./assets/resources/images/arrows/unfold.png">
+        <span>{{comments.button.transferOption}}</span></p>
+    <div *ngIf="!isCollapse">
+        <p class="min-p"><span innerHtml={{comments.label.approveTransferlable}}></span></p>
+        <p-dataTable [value]="value" styleClass="transferTable">
+            <p-column field="key" header="">
+                <ng-template let-col let-it="rowData" pTemplate="body">
+                    <input type="checkbox" [ngModel]="it.isChecked" (click)="onChecked(it)">
+                </ng-template>
+            </p-column>
+            <p-column field="key" header="Group"></p-column>
+            <p-column field="softwareversion" header="Model"></p-column>
+            <p-column field="systemname" header="Software Version"></p-column>
+        </p-dataTable>
+        <p style="margin-bottom:0px;"><span>{{comments.label.comments}}({{255-transferTextarea.value.length}})</span></p>
+        <textarea #transferTextarea rows="5" cols="80" maxlength="255" style="resize:none" [(ngModel)]="transferCommentText"></textarea>
+    </div>
+    <p-footer>
+        <button pButton type="button" label="OK" *ngIf="!hasTransfer && commentText.length==0" disabled  (click)="onOKButton()" class="ui-button-confirm"></button>
+        <button pButton type="button" label="OK" *ngIf="hasTransfer || commentText.length>0" (click)="onOKButton()" class="ui-button-confirm"></button>
+        <button pButton type="button" label="Cancel" (click)="onCancelButton()" class="ui-button-confirm"></button>
+    </p-footer>
+</p-dialog>

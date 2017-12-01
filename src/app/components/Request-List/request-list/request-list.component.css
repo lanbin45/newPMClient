@@ -1,0 +1,35 @@
+.fa-exclamation .fa-stack-1x
+{
+    left: 5px;
+}
+
+.compare-panel-header-cls{
+    /*height:4vh;*/
+    min-height: 50px;
+    /* width:97vw; */
+    border: 1px solid #D5D5D5;
+    border-bottom: 0;
+    background:linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+}
+
+.compare-panel-footer{
+    height:5vh;
+    /* width:97vw; */
+    border: 1px solid #D5D5D5;
+    background:linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+}
+
+.request-list-cls{
+    /*width:98vw;*/
+    overflow-x: auto;
+}
+.compare-panel-cls{
+    height:40vh !important;
+    /* width:97vw; */
+    overflow: auto;
+    border: 1px solid #D5D5D5;
+    /*background:#4286f4;*/
+}
+.right-button-group-cls{
+    float: right;
+}

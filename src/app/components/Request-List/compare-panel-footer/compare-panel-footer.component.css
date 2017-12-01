@@ -1,0 +1,6 @@
+.compare-panel-footer{
+    height:5vh;
+    /* width:97vw; */
+    border: 1px solid #D5D5D5;
+    background:linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+}

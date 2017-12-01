@@ -1,0 +1,67 @@
+<app-blockable-div #pblockableDiv>
+  <p-toolbar [style]="{'width':'100%'}">
+    <div class="ui-toolbar-group-left"></div>
+    <div class="ui-toolbar-group-right">
+      <p-toggleButton onLabel="Expand All" (onChange)="onCollapseAllClick(event,tt)" offLabel="Collapse All" styleClass="toogle-button-cls" ></p-toggleButton>
+      <p-toggleButton onLabel="Show All" (onChange)="onShowDiffClick($event)" offLabel="Show Differences Only" styleClass="toogle-button-cls"></p-toggleButton>
+    </div>
+  </p-toolbar>
+  <p-CompareTreeTable #tt [value]="compareData" [showdiff]="hiddenthirdColumn" selectionMode="mulitiple" [(selection)]="differentParams"
+    tableStyleClass="tree-table-custom" styleClass="compare-panel-cls" toggleColumnIndex="0">
+    <p-column field="name" header=""></p-column>
+    <p-column *ngIf="epnames" field="targetvalue" styleClass="tree-table-row-cls" [header]="">
+      <ng-template pTemplate="body" let-col let-row="rowData" let-ri="rowIndex">
+        <span> {{row.data.targetvalue}} </span>
+      </ng-template>
+      <ng-template pTemplate="header" let-col>
+        <div *ngIf="epnames" (click)="isEP && onHeaderClick(event,tt)">
+          <span>
+            <span *ngIf="epnames.status=='APPROVAL_REQUESTED'; then approveButton else notSureButton "></span> {{epnames.epname}} </span>
+          <br>
+          <span> {{epnames.modelname}} </span>
+          <br>
+          <span> V{{epnames.version}} {{epnames.time}} </span>
+          <br>
+        </div>
+      </ng-template>
+    </p-column>
+    <!-- <div [hidden]="hiddenthirdColumn && !isEP"> -->
+    <p-column *ngIf="hiddenthirdColumn && isEP" field="mastervalue" styleClass="tree-table-row-cls" [header]="">
+      <ng-template pTemplate="body" let-col let-row="rowData" let-ri="rowIndex">
+        <span> {{row.data.mastervalue}} </span>
+      </ng-template>
+      <ng-template pTemplate="header" let-col>
+        <div *ngIf="epnames">
+          <span>
+            <span *ngIf="epnames.status=='APPROVAL_REQUESTED'; then approveButton else notSureButton "></span>{{epnames.epname}} </span>
+          <br>
+          <span> {{epnames.modelname}} </span>
+          <br>
+          <span> V{{epnames.version}} {{epnames.time}} </span>
+          <br>
+        </div>
+      </ng-template>
+    </p-column>
+    <!-- </div> -->
+  </p-CompareTreeTable>
+  <div *ngIf="epnames">
+    <app-compare-panel-footer [isEP]="isEP" [isDelete]="isDeleted" [selectedProtocol]="selectedProtocol"></app-compare-panel-footer>
+  </div>
+</app-blockable-div>
+<ng-template #approveButton>
+  <div style="text-align:center">
+    <i class="fa fa-exclamation fa-lg" aria-hidden="true" style="color:#ffb300"></i>
+  </div>
+</ng-template>
+<ng-template #notSureButton>
+  <div style="text-align:center">
+    <span class="fa-stack" style="text-align:center">
+      <i class="fa fa-trash fa-stack-2x"></i>
+      <i class="fa fa-exclamation fa-stack-1x" style="color:#ffb300"></i>
+    </span>
+  </div>
+</ng-template>
+<p-blockUI [target]="pblockableDiv" [blocked]="blockState">
+  <i class="fa fa-circle-o-notch fa-spin fa-2x" style="position:absolute;top:25%;left:50%;color:#1b1d1f;z-index:2"></i>
+</p-blockUI>
+

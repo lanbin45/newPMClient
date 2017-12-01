@@ -1,0 +1,11 @@
+<p-dialog [(visible)]="display" [modal]="true" [responsive]="true" minWidth="450">
+    <p-header>
+        Confirm
+    </p-header>
+    <span>{{confirmMsg}}</span>
+    <textarea pInputTextarea rows="5" cols="30" style="resize:none" [(ngModel)]="comments"></textarea>
+    <p-footer>
+        <button pButton type="button" label="Cancel" (click)="onCancelButton()" class="ui-button-primary"></button>
+        <button pButton type="button" label="OK" disabled="true" (click)="onOKButton()" class="ui-button-primary"></button>
+    </p-footer>
+</p-dialog>

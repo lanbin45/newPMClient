@@ -1,0 +1,117 @@
+<app-blockable-div #pDataTableDiv >
+<div class="ui-widget ui-corner-all ui-widget-content">
+  <div class="ui-widget ui-widget-header ui-corner-all ui-helper-clearfix display-span-cls">
+    <span [innerHTML]="displaySpan">
+    </span>
+  </div>
+  <div class="ui-widget-content ui-grid ui-grid-pad ui-grid-responsive" [ngSwitch]="activeIndex">
+    <div *ngSwitchCase="0" style="height:76vh" class="ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
+      <div class="adjust-div-cls">
+        <span class="span-content-cls">You can create
+          <strong>Protocol Master List</strong> from this page.</span>
+        <br>
+        <span class="span-content-cls">Please click
+          <strong>[Next]</strong> to start.</span>
+      </div>
+    </div>
+    <div *ngSwitchCase="2" class="ui-grid-row" style="height:76vh">{{activeIndex}}</div>
+    <div *ngSwitchCase="4" class="ui-grid-row" style="height:76vh">{{activeIndex}}</div>
+    <div *ngSwitchDefault class="ui-grid-row" style="height:76vh">
+      <div class="ui-grid-col-6 ui-widget-content" pDroppable="c1" (onDragLeave)="dragLeave($event)" [ngClass]="{'ui-state-highlight':highlightLeft}"
+        (onDragOver)="dragEnter($event,true)" (onDrop)="drop($event,false)">
+        <div class="ui-datatable ui-widget" style="height:74vh;overflow-y:auto">
+          <table class="ui-datatable-data">
+            <thead class="ui-datatable-thead">
+              <tr class="ui-state-default">
+                <th class="ui-state-default ui-unselectable-text" style="width:5%" scope="col">
+                  <span class="ui-column-title"></span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">Patient Type</span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">Body Region</span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">{{scannername}}</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="ui-datatable-data ui-widget-content">
+              <tr class="ui-datatable-odd ui-widget-content" *ngFor="let row of originalList" pDraggable="c2" (onDragStart)="dragStart($event,row,false)"
+                (onDragEnd)="dragEnd($event,false)">
+                <td>
+                  <p-checkbox [binary]="true" (onChange)="onchangeLeft($event,row)" styleClass="radio-button-cls"></p-checkbox>
+                </td>
+                <td>
+                  <span class="ui-cell-data">{{row.patienttype}}</span>
+                </td>
+                <td>
+                  <span class="ui-cell-data">{{row.organ}}</span>
+                </td>
+                <td>
+                  <span class="ui-cell-data">{{row.detail[0].protocolname}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ui-grid-col-6 ui-widget-content" [ngClass]="{'ui-state-highlight':highlightRight}" pDroppable="c2" (onDragLeave)="dragLeave($event)"
+        (onDragOver)="dragEnter($event,false)" (onDrop)="drop($event,true)">
+        <div class="ui-datatable ui-widget" style="height:74vh;overflow-y:auto">
+          <table class="ui-datatable-data">
+            <thead class="ui-datatable-thead">
+              <tr class="ui-state-default">
+                <th class="ui-state-default ui-unselectable-text" style="width:5%" scope="col">
+                  <span class="ui-column-title"></span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">Patient Type</span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">Body Region</span>
+                </th>
+                <th class="ui-state-default ui-unselectable-text" scope="col">
+                  <span class="ui-column-title">{{scannername}}</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="ui-datatable-data ui-widget-content">
+              <tr class="ui-datatable-odd ui-widget-content" *ngFor="let row of masterList" pDraggable="c1" (onDragStart)="dragStart($event,row,true)"
+                (onDragEnd)="dragEnd($event,true)">
+                <td>
+                  <p-checkbox [binary]="true" (onChange)="onchangeRight($event,row)" styleClass="radio-button-cls"></p-checkbox>
+                </td>
+                <td>
+                  <span class="ui-cell-data">{{row.patienttype}}</span>
+                  <td>
+                    <span class="ui-cell-data">{{row.organ}}</span>
+                  </td>
+                  <td>
+                    <span class="ui-cell-data">{{row.detail[0].protocolname}}</span>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-widget ui-widget-header ui-corner-all ui-helper-clearfix ui-g">
+    <div class="ui-toolbar-group-left ui-g-10 ui-md-7 ui-sm-12">
+      <p-steps [model]="items" [(activeIndex)]="activeIndex" styleClass="steps-custom" [readonly]="false"></p-steps>
+    </div>
+    <div class="ui-toolbar-group-right ui-g-2 ui-md-5 ui-sm-12 vertical-align-cls">
+      <button pButton type="button" label=" Back" class="ui-button-primary" [disabled]="activeIndex===0" (click)="onPreClick()"
+        icon="fa fa-arrow-circle-left"></button>
+      <button pButton type="button" label=" Approve" class="ui-button-primary" *ngIf="activeIndex===4" (click)="onNextClick()"
+        icon="fa fa-arrow-circle-right"></button>
+      <button pButton type="button" label=" Next" class="ui-button-primary" *ngIf="activeIndex!==4" (click)="onNextClick()" icon="fa fa-arrow-circle-right"></button>
+      <button pButton type="button" label=" Cancel" class="ui-button-warning" (click)="onReject()" icon="fa fa-times"></button>
+    </div>
+  </div>
+</div>
+</app-blockable-div>
+<p-blockUI [target]="pDataTableDiv" [blocked]="blocked">
+    <i class="fa fa-circle-o-notch fa-spin fa-2x" style="position:absolute;top:25%;left:50%;color:#1b1d1f;z-index:2"></i>
+</p-blockUI>

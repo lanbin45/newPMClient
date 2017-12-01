@@ -1,0 +1,14 @@
+{
+    "hello": "the word is hello",
+    "setting": {
+        "title": "Other Setting",
+        "label": {
+            "CumulativeCtdiDisplay": "Cumulative CTDIvol Display",
+            "ShowAlertColor": "Show Alert Color"
+        },
+        "header": {
+            "Name": "Setting Name",
+            "Value": "Setting Value"
+        }
+    }
+}

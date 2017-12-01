@@ -1,0 +1,14 @@
+{
+    "hello": "你好",
+    "setting": {
+        "title": "其他设置",
+        "label": {
+            "CumulativeCtdiDisplay": "Cumulative CTDIvol Display",
+            "ShowAlertColor": "Show Alert Color"
+        },
+        "header": {
+            "Name": "Setting Name",
+            "Value": "Setting Value"
+        }
+    }
+}
